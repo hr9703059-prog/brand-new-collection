@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand New Collection | Pakistan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Poppins,sans-serif;background:#faf8f4;color:#211d19}
+header{background:#211d19;color:white;padding:20px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+.logo{font-family:'Playfair Display';font-size:25px;color:#e4bd7c}
+.logo span{display:block;font:9px Poppins;letter-spacing:4px;color:white}
+nav a{color:white;text-decoration:none;margin:0 10px;font-size:13px}
+button{cursor:pointer;border:0;padding:12px 18px;font-family:inherit}
+.hero{min-height:540px;display:flex;align-items:center;padding:60px 8%;background:linear-gradient(90deg,#201b19ed,#201b1955),url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1400') center/cover;color:white}
+.hero h1{font:clamp(42px,6vw,72px) 'Playfair Display';max-width:650px}
+.hero h1 span{color:#e4bd7c}
+.hero p{margin:20px 0;line-height:2;max-width:500px}
+.gold{background:#c39a5b;color:white;padding:14px 25px;font-weight:bold}
+.section{padding:65px 7%}
+.heading{text-align:center;margin-bottom:35px}
+.heading small{color:#ad854c;letter-spacing:4px}
+.heading h2{font:40px 'Playfair Display';margin-top:10px}
+.categories{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.categories button{background:#eee7dd;color:#302820}
+.categories button.active{background:#28221e;color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
+.card{background:white;box-shadow:0 5px 25px #0000000d;overflow:hidden}
+.card img{width:100%;height:300px;object-fit:cover}
+.card-content{padding:17px}
+.card h3{font:21px 'Playfair Display';margin:8px 0}
+.card p{font-size:12px;color:#888}
+.price{color:#a47b43;font-weight:bold;margin:12px 0}
+.card button{width:100%;background:#28221e;color:white}
+.promo{background:#28221e;color:white;padding:55px 20px;text-align:center}
+.promo h2{font:40px 'Playfair Display';color:#e4bd7c}
+.promo p{margin:15px}
+.admin{background:#fff;padding:30px 7%;display:none}
+.admin input,.admin select,.admin textarea,.checkout input,.checkout select,.checkout textarea{width:100%;padding:12px;margin:8px 0 15px;border:1px solid #ddd;font:inherit}
+.admin label,.checkout label{font-size:13px}
+.admin h2,.checkout h2{font:30px 'Playfair Display';margin-bottom:20px}
+.admin-product{padding:12px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.danger{background:#a33;color:white}
+.checkout{display:none;position:fixed;inset:0;background:#000a;z-index:20;overflow:auto;padding:20px}
+.checkout-box{background:white;max-width:550px;margin:20px auto;padding:25px}
+footer{background:#211d19;color:white;text-align:center;padding:40px 15px}
+footer p{font-size:12px;margin:10px}
+footer a{color:#e4bd7c}
+#cart{position:fixed;bottom:20px;right:20px;background:#c39a5b;color:white;border-radius:40px;padding:15px 22px;z-index:10}
+@media(max-width:600px){
+header{justify-content:center;text-align:center}
+nav{width:100%}
+.hero{min-height:430px}
+.hero h1{font-size:43px}
+.section{padding:45px 5%}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">BRAND NEW COLLECTION
+<span>THE ART OF ELEGANCE</span></div>
+<nav>
+<a href="#home">Home</a>
+<a href="#shop">Ladies</a>
+<a href="#shop">Gents</a>
+<a href="#shawls">Shawls</a>
+<a href="#contact">Contact</a>
+</nav>
+<button class="gold" onclick="showAdmin()">ADMIN</button>
+</header>
+
+<section class="hero" id="home">
+<div>
+<h1>Discover Your <span>Beautiful</span> Style.</h1>
+<p>Premium Pakistani Ladies Suits, Gents Fabrics and Beautiful Shawls. Order online and get delivery anywhere in Pakistan.</p>
+<button class="gold" onclick="document.getElementById('shop').scrollIntoView()">SHOP COLLECTION</button>
+</div>
+</section>
+
+<section class="section" id="shop">
+<div class="heading">
+<small>NEW ARRIVALS</small>
+<h2>Our Premium Collection</h2>
+</div>
+<div class="categories" id="filters">
+<button class="active" onclick="filterProducts('All',this)">All</button>
+<button onclick="filterProducts('Ladies 3 Piece',this)">Ladies 3 Piece</button>
+<button onclick="filterProducts('Ladies 2 Piece',this)">Ladies 2 Piece</button>
+<button onclick="filterProducts('Ladies Stitched',this)">Stitched</button>
+<button onclick="filterProducts('Ladies Unstitched',this)">Unstitched</button>
+<button onclick="filterProducts('Gents',this)">Gents</button>
+<button onclick="filterProducts('Shawls',this)">Shawls</button>
+</div>
+<div class="grid" id="products"></div>
+</section>
+
+<section class="promo">
+<h2>Online Payment = Rs. 100 OFF!</h2>
+<p>Enjoy a special discount when you choose online payment.</p>
+<p>Cash on Delivery Available Across Pakistan</p>
+</section>
+
+<section class="section" id="shawls">
+<div class="heading">
+<small>CONTACT & SUPPORT</small>
+<h2>Order Your Favourite Style</h2>
+</div>
+<div style="text-align:center">
+<p>WhatsApp: 03214902917</p><br>
+<a class="gold" style="text-decoration:none" href="https://wa.me/923214902917">ORDER ON WHATSAPP</a>
+</div>
+</section>
+
+<section class="admin" id="admin">
+<h2>Admin Dashboard</h2>
+<button class="danger" onclick="logout()">Logout</button>
+<h3 style="margin:25px 0">Add New Product</h3>
+<form id="productForm">
+<label>Product Name</label>
+<input id="pname" required placeholder="Suit name">
+<label>Category</label>
+<select id="pcat">
+<option>Ladies 3 Piece</option>
+<option>Ladies 2 Piece</option>
+<option>Ladies Stitched</option>
+<option>Ladies Unstitched</option>
+<option>Gents</option>
+<option>Shawls</option>
+</select>
+<label>Price in PKR</label>
+<input id="pprice" type="number" required>
+<label>Available Colours</label>
+<input id="pcolor" placeholder="Red, Black, Blue">
+<label>Product Photo</label>
+<input id="pimage" type="file" accept="image/*" required>
+<button class="gold" type="submit">UPLOAD PRODUCT</button>
+</form>
+<h3 style="margin:25px 0">Manage Products</h3>
+<div id="adminProducts"></div>
+</section>
+
+<div class="checkout" id="checkout">
+<div class="checkout-box">
+<button onclick="closeCheckout()" style="float:right">✕</button>
+<h2>Complete Your Order</h2>
+<div id="orderSummary"></div>
+<form id="orderForm">
+<label>Your Name</label>
+<input id="customer" required>
+<label>Phone Number</label>
+<input id="phone" required placeholder="03XXXXXXXXX">
+<label>City</label>
+<input id="city" required placeholder="Your city">
+<label>Complete Address</label>
+<textarea id="address" required placeholder="House, street, area"></textarea>
+<label>Payment Method</label>
+<select id="payment">
+<option value="COD">Cash on Delivery</option>
+<option value="Online">Online Payment (Rs. 100 OFF)</option>
+</select>
+<button class="gold" style="width:100%">PLACE ORDER ON WHATSAPP</button>
+</form>
+<p style="font-size:11px;margin-top:15px">Online payment will be confirmed through the seller's approved payment method.</p>
+</div>
+</div>
+
+<button id="cart" onclick="openCheckout()">🛍 BAG (<span id="count">0</span>)</button>
+
+<footer id="contact">
+<div class="logo">BRAND NEW COLLECTION</div>
+<p>Premium Fashion | Pakistan</p>
+<p>WhatsApp: 03214902917</p>
+<p>© 2026 Brand New Collection</p>
+<a href="https://wa.me/923214902917">Contact Us</a>
+</footer>
+
+<script>
+const initialProducts=[
+{id:1,name:"Ruby Dhanak 3 Piece Suit",category:"Ladies 3 Piece",price:5490,color:"Maroon, Ruby",image:"https://images.unsplash.com/photo-1583391733958-dcf?auto=format&fit=crop&w=700"},
+{id:2,name:"Elegant Ladies 2 Piece",category:"Ladies 2 Piece",price:3290,color:"Black, Cream",image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700"},
+{id:3,name:"Premium Stitched Suit",category:"Ladies Stitched",price:4990,color:"Multiple colours",image:"https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?w=700"},
+{id:4,name:"Gents Unstitched Fabric",category:"Gents",price:3990,color:"White, Navy",image:"https://images.unsplash.com/photo-1617137968427-85924c800a22?w=700"},
+{id:5,name:"Winter Shawl",category:"Shawls",price:2790,color:"Brown, Grey",image:"https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=700"}
+];
+
+let products=JSON.parse(localStorage.getItem("bncProducts")||"null")||initialProducts;
+let cart=[];
+
+function save(){localStorage.setItem("bncProducts",JSON.stringify(products))}
+function render(list=products){
+document.getElementById("products").innerHTML=list.map(p=>`
+<div class="card">
+<img src="${p.image}" alt="${p.name}">
+<div class="card-content">
+<p>${p.category}</p>
+<h3>${p.name}</h3>
+<p>Colours: ${p.color||"Available"}</p>
+<div class="price">Rs. ${Number(p.price).toLocaleString("en-PK")}</div>
+<button onclick="addCart(${p.id})">ADD TO BAG</button>
+</div></div>`).join("");
+}
+function filterProducts(cat,btn){
+document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+render(cat==="All"?products:products.filter(p=>cat==="Gents"?p.category==="Gents":cat==="Shawls"?p.category==="Shawls":p.category===cat));
+}
+function addCart(id){
+let p=products.find(x=>x.id===id);
+cart.push(p);
+document.getElementById("count").textContent=cart.length;
+alert("Product added to your bag!");
+}
+function openCheckout(){
+if(!cart.length)return alert("Please add a product first!");
+document.getElementById("orderSummary").innerHTML=cart.map(p=>`<p>${p.name} — Rs. ${p.price}</p>`).join("");
+document.getElementById("checkout").style.display="block";
+}
+function closeCheckout(){document.getElementById("checkout").style.display="none"}
+document.getElementById("payment").onchange=()=>{
+document.getElementById("orderSummary").innerHTML=cart.map(p=>`<p>${p.name} — Rs. ${p.price}</p>`).join("")+
+"<hr><p>Discount: Rs. "+(document.getElementById("payment").value==="Online"?100:0)+"</p>";
+};
+document.getElementById("orderForm").onsubmit=e=>{
+e.preventDefault();
+let total=cart.reduce((s,p)=>s+Number(p.price),0);
+let online=document.getElementById("payment").value==="Online";
+if(online)total=Math.max(0,total-100);
+let msg="NEW BRAND NEW COLLECTION ORDER%0A";
+msg+="Name: "+encodeURIComponent(document.getElementById("customer").value)+"%0A";
+msg+="Phone: "+encodeURIComponent(document.getElementById("phone").value)+"%0A";
+msg+="City: "+encodeURIComponent(document.getElementById("city").value)+"%0A";
+msg+="Address: "+encodeURIComponent(document.getElementById("address").value)+"%0A";
+msg+="Products: "+encodeURIComponent(cart.map(p=>p.name).join(", "))+"%0A";
+msg+="Payment: "+(online?"Online Payment - Rs. 100 Discount":"Cash on Delivery")+"%0A";
+msg+="Total: Rs. "+total;
+window.open("https://wa.me/923214902917?text="+msg,"_blank");
+};
+function showAdmin(){
+let pass=prompt("Enter Admin Password:");
+if(pass==="BNC2026"){
+document.getElementById("admin").style.display="block";
+renderAdmin();
+document.getElementById("admin").scrollIntoView();
+}else alert("Incorrect Password!");
+}
+function logout(){document.getElementById("admin").style.display="none"}
+function renderAdmin(){
+document.getElementById("adminProducts").innerHTML=products.map(p=>`
+<div class="admin-product"><span>${p.name} — Rs.${p.price}</span>
+<button class="danger" onclick="deleteProduct(${p.id})">Delete</button></div>`).join("");
+}
+function deleteProduct(id){
+if(confirm("Delete this product?")){
+products=products.filter(p=>p.id!==id);
+save();render();renderAdmin();
+}
+}
+document.getElementById("productForm").onsubmit=e=>{
+e.preventDefault();
+let file=document.getElementById("pimage").files[0];
+if(!file)return alert("Please choose a product photo.");
+if(file.size>1500000)return alert("Please use an image smaller than 1.5 MB.");
+let reader=new FileReader();
+reader.onload=()=>{
+products.unshift({
+id:Date.now(),
+name:document.getElementById("pname").value,
+category:document.getElementById("pcat").value,
+price:Number(document.getElementById("pprice").value),
+color:document.getElementById("pcolor").value,
+image:reader.result
+});
+save();render();renderAdmin();e.target.reset();
+alert("New product added!");
+};
+reader.readAsDataURL(file);
+};
+render();
+</script>
+</body>
+</html>
